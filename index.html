@@ -1,23 +1,34 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Galleria Fotografica</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner&family=Sometype+Mono&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
     <header>
       <h1>ESTATE '24</h1>
     </header>
-    <main id="gallery">
-      <!-- Una foto statica -->
-      <div class="photo">
-        <img
-          src="https://marcolanci.it/boolean/assets/pictures/1.png"
-          alt="Foto statica"
-        />
-        <p>Accusamus Beatae Ad Facilis Cum Similique Qui Sunt</p>
+    <main>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="card">
+              <img src="./img/pin.svg" alt="puntina" class="pin" />
+              <img
+                src="https://marcolanci.it/boolean/assets/pictures/1.png"
+                alt="immagine"
+                class="immagine"
+              />
+              <p class="descrizione"></p>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
