@@ -60,11 +60,11 @@ main {
   width: 30px;
 }
 
-.card .immagine {
+.card .image {
   width: 100%;
 }
 
-.card .descrizione {
+.card .description {
   font-family: "Sometype Mono", monospace;
   font-size: 14px;
   margin-top: 10px;

@@ -4,8 +4,8 @@ axios
     const data = response.data;
 
     const card = document.querySelector(".card");
-    const immagine = card.querySelector(".immagine");
-    const descrizione = card.querySelector(".descrizione");
+    const immagine = card.querySelector(".image");
+    const descrizione = card.querySelector(".description");
 
     immagine.src = data[0].url;
     immagine.alt = data[0].title;
