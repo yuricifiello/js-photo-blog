@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* header */
+header {
+  background-image: url("../img/wall.png");
+  padding: 30px;
+}
+
+h1 {
+  font-family: "Edu TAS Beginner", sans-serif;
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/*  main */
+main {
+  background-image: url("../img/cork.png");
+  background-size: cover;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+/* Griglia */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.col {
+  flex: 0 0 300px;
+  padding: 15px;
+}
+
+/* Card */
+.card {
+  background: white;
+  padding: 15px;
+  position: relative;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.card .pin {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+}
+
+.card .immagine {
+  width: 100%;
+}
+
+.card .descrizione {
+  font-family: "Sometype Mono", monospace;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .col {
+    flex: 0 0 80%;
+  }
+
+  h1 {
+    font-size: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .col {
+    flex: 0 0 100%;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+}
