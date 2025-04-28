@@ -1,45 +1,51 @@
-axios
-  .get("https://lanciweb.github.io/demo/api/pictures/")
-  .then((response) => {
-    const immagini = response.data;
-    const container = document.querySelector(".row");
+const cardsWrapper = document.getElementById("cards-wrapper");
+const overlay = document.getElementById("overlay");
+const overlayImage = document.getElementById("overlay-image");
+const closeButton = document.getElementById("close-button");
 
-    immagini.forEach((immagine) => {
-      const col = document.createElement("div");
-      col.classList.add("col");
+axios.get("https://lanciweb.github.io/demo/api/pictures/").then((response) => {
+  const posts = response.data;
+  console.log(posts);
 
-      const card = document.createElement("div");
-      card.classList.add("card");
-
-      // Creo la puntina
-      const puntina = document.createElement("img");
-      puntina.src = "../img/pin.svg";
-      puntina.alt = "puntina";
-      puntina.classList.add("puntina");
-
-      // Creo l'immagine principale
-      const imgElement = document.createElement("img");
-      imgElement.src = immagine.url;
-      imgElement.alt = immagine.title;
-      imgElement.classList.add("foto");
-
-      // Creo la descrizione
-      const descrizione = document.createElement("p");
-      descrizione.textContent = immagine.title;
-      descrizione.classList.add("descrizione");
-
-      // Inserisco tutto nella card
-      card.appendChild(puntina);
-      card.appendChild(imgElement);
-      card.appendChild(descrizione);
-
-      // Inserisco la card nella colonna
-      col.appendChild(card);
-
-      // Inserisco la colonna nella riga
-      container.appendChild(col);
-    });
-  })
-  .catch((error) => {
-    console.error("Errore nel caricamento delle immagini:", error);
+  let cardsHtml = "";
+  posts.forEach((post) => {
+    cardsHtml += generatePostCard(post);
   });
+
+  cardsWrapper.innerHTML += cardsHtml;
+
+  const allImages = cardsWrapper.querySelectorAll(".card-main img");
+  allImages.forEach((img) => {
+    img.addEventListener("click", openOverlay);
+  });
+});
+
+const generatePostCard = (post) => {
+  const cardHtml = `
+    <div class="col">
+      <div class="card">
+         <img src="../img/pin.svg" alt="puntina" class="puntina">
+        <div class="card-main">
+          <img src="${post.url}" alt="${post.title}" class="img" data-original-src="${post.url}" style="cursor: pointer;" />
+          <div class="card-content">
+            <span>${post.date}</span>
+            <span>${post.title}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  return cardHtml;
+};
+
+function openOverlay(event) {
+  const clickedImageSrc = event.target.dataset.originalSrc;
+  overlayImage.src = clickedImageSrc;
+  overlay.classList.remove("overlay-hidden");
+}
+function closeOverlay() {
+  overlay.classList.add("overlay-hidden");
+  overlayImage.src = "";
+}
+
+closeButton.addEventListener("click", closeOverlay);
